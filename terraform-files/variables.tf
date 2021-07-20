@@ -5,7 +5,6 @@ variable "region" {
 
 variable "bucket-name" {
   type = string
-  default = "erik-test-web-bucket"
 }
 variable "index-file-path" {
   type = string
