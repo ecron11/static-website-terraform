@@ -4,7 +4,10 @@ variable "region" {
 variable "remote-state-bucket" {
   type = string
 }
-variable "bucket-name" {
+variable "domain-name" {
+  type = string
+}
+variable "subdomain" {
   type = string
 }
 variable "index-file-path" {

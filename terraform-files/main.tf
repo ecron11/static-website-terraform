@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "web" {
-  bucket = var.bucket-name
+  bucket = "${var.subdomain}.${var.domain-name}"
   acl    = "public-read"
 
   website {
@@ -52,4 +52,20 @@ resource "aws_s3_bucket_object" "styles" {
   key    = "styles.css"
   content_type = "text/css"
   source = var.css-file-path
+}
+
+# Route 53 settings
+data "aws_route53_zone" "primary" {
+  name = var.domain-name
+}
+
+resource "aws_route53_record" "subdomain" {
+  zone_id = data.aws_route53_zone.primary.zone_id
+  name    = "${var.subdomain}.${var.domain-name}"
+  type    = "A"
+  alias {
+    name = aws_s3_bucket.web.website_domain
+    zone_id = aws_s3_bucket.web.hosted_zone_id
+    evaluate_target_health = true
+  }
 }
