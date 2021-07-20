@@ -1,6 +1,9 @@
 variable "region" {
   type = string
-  default = "us-west-1"
+}
+
+variable "remote-state-bucket" {
+  type = string
 }
 
 variable "bucket-name" {
@@ -8,13 +11,10 @@ variable "bucket-name" {
 }
 variable "index-file-path" {
   type = string
-  default = "../web-files/index.html"
 }
 variable "error-file-path" {
   type = string
-  default = "../web-files/error.html"
 }
 variable "css-file-path" {
   type = string
-  default = "../web-files/styles.css"
 }
