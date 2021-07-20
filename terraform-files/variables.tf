@@ -1,11 +1,9 @@
 variable "region" {
   type = string
 }
-
 variable "remote-state-bucket" {
   type = string
 }
-
 variable "bucket-name" {
   type = string
 }
