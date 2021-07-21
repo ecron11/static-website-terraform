@@ -1,7 +1,3 @@
-provider "aws" {
-  region = var.region
-}
-
 resource "aws_s3_bucket" "web" {
   bucket = "${var.subdomain}.${var.domain-name}"
   acl    = "public-read"
